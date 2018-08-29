@@ -159,6 +159,7 @@ function random() {
     add_cart(possibilities[Math.floor(Math.random()*possibilities.length)]);
 }
 
+//Card reader
 socket = new WebSocket("ws://localhost:3000", "nfc");
 socket.onmessage = function(msgevent) {
     var msg = JSON.parse(msgevent.data);
