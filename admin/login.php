@@ -15,7 +15,7 @@ function verify($username, $password) {
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
-    } else {
+    } else { //If connection is successfull, login to admin panel.
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         header("location: panel.php");
