@@ -418,7 +418,7 @@ function showfield2(name){
 
 <div class="container" style="margin: 20px;">
 <h1>Inventory Panel</h1>
-Click <a target="_blank" href="https://sa-atlantis.nl/tally/inventory">here</a> to open the inventory panel.
+Click <a target="_blank" href="https://tally.sa-atlantis.nl/inventory">here</a> to open the inventory panel.
 </div>
 
 <script type="text/javascript">
