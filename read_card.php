@@ -11,7 +11,7 @@ function read_card($uid) {
     $sql = 'SELECT * FROM '.$table.' WHERE uid = "'.$uid.'"';
     $result = $conn->query($sql);
 
-    if ($result->num_rows == 1) {
+    if ($result->num_rows == 1) {   //Checks if only one student number is found
         $row = $result->fetch_assoc();
         echo $row['student_number'];
     } else {
