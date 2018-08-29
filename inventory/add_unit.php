@@ -4,7 +4,7 @@ session_start();
 
 $servername = "localhost";
 $dbname = "saatla1q_tally";
-$username = $_SESSION['username']; 
+$username = $_SESSION['username'];
 $password = $_SESSION['password'];
 
 $GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
