@@ -266,7 +266,7 @@ function showfield(name){
         <i>Enter product name</i><br>
         Price: <input id="price" type="number" step="0.01" name="price">
         <i>Enter price in euros</i><br>
-        Image: <input id="image" type="file" name="image">
+        Image: <input id="image" type="text" name="image">
         <i>Enter image URL</i><br>
         Unit: <input id="unit" type="number" name="unit">
         <i>Enter unit size (amount of products in box/crate</i><br>
