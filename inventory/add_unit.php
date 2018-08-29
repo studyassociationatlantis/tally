@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-
 $servername = "localhost";
 $dbname = "saatla1q_tally";
 $username = $_SESSION['username'];
