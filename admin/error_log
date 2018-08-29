@@ -1,0 +1,2 @@
+[29-Aug-2018 10:07:07 Europe/Berlin] PHP Notice:  Undefined index: HTTPS in /home/saatlant/public_html/subdomains/tally/admin/index.php on line 3
+[29-Aug-2018 10:07:29 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatlant'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/admin/login.php on line 15
