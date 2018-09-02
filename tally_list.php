@@ -283,9 +283,6 @@ if ($result->num_rows > 0) {
 <footer class="footer">
     <div class="container">
         <div class=col-sm-2>
-            <a target="_blank" href="https://sa-atlantis.nl/tally/purchases" class="btn btn-default">Purchase overview</a>            
-        </div>
-        <div class=col-sm-2>
             <a href="#myPopup" data-rel="popup" class="btn btn-default">Register</a> 
         </div>
         <div class=col-sm-4 style="text-align: center;">
