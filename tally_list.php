@@ -285,11 +285,11 @@ if ($result->num_rows > 0) {
         <div class=col-sm-2>
             <a href="#myPopup" data-rel="popup" class="btn btn-default">Register</a> 
         </div>
-        <div class=col-sm-4 style="text-align: center;">
-            S.A. Atlantis Tally List
-        </div>
         <div class=col-sm-2 style="text-align: center;">
            <a href="#myPopup3" data-rel ="popup" class="btn btn-default">Feedback</a>
+        </div>
+        <div class=col-sm-4 style="text-align: center;">
+            S.A. Atlantis Tally List
         </div>
         <div class=col-sm-2 id="checkout">
             <a href="#myPopup2" data-rel="popup" class="btn btn-default" id="open_checkout">Checkout</a>
