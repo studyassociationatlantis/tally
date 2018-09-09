@@ -16,7 +16,7 @@ if (isset($_SESSION['session_SN'])) {
 <!DOCTYPE html>
 
 <html lang="en">
-<title>S.A. Atlantis Tally List - Login Panel</title>
+<titel>S.A. Atlantis Tally List - Login Panel</title>
 
 <header>
 </header>
