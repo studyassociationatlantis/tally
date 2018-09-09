@@ -16,14 +16,14 @@ if (isset($_SESSION['session_SN'])) {
 <!DOCTYPE html>
 
 <html lang="en">
-<title>S.A. Atlantis Tally List - Login Panel</title>
+<titel>S.A. Atlantis Tally List - Login Panel</title>
 
 <header>
 </header>
 
 <body>
 
-<form action="login.php" method="post" id="login_form">
+<form action="https://sa-atlantis.nl/oauth/token" method="post" id="login_form">
     Student/employee number: <input id="session_SN" name="session_SN" type="text"><br>
     Password: <input id="pass" name="password" type="password"><br>
     <input id="submit" type="submit" value="Submit"><br>
