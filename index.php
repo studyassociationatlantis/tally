@@ -23,7 +23,7 @@ if (isset($_SESSION['session_SN'])) {
 
 <body>
 
-<form action="login.php" method="post" id="login_form">
+<form action="https://sa-atlantis.nl/oauth/token" method="post" id="login_form">
     Student/employee number: <input id="session_SN" name="session_SN" type="text"><br>
     Password: <input id="pass" name="password" type="password"><br>
     <input id="submit" type="submit" value="Submit"><br>
