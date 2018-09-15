@@ -31,6 +31,7 @@ if (isset($_SESSION['session_SN'])) {
 </form>
 
 
+<!--- Forgot password section -->
 <a href="https://sa-atlantis.nl/members-2/">Forgot password?</a><br>
 <br>
 By logging in, you accept that all purchases will be logged under your name. Please use this tally list system properly, and close it after you are finished. <br>
