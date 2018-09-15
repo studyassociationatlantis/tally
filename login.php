@@ -16,7 +16,6 @@ if ($SN == "x1234567") {
     }
 }
 
-    
     $servername = "localhost";
     include("saatlant_members.php");
     $dbname = "saatla1q_members";
