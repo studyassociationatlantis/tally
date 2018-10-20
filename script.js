@@ -248,12 +248,12 @@ function scanproduct(barcode){
         checkout("s" + barcode.substr(0, 7));
     } else {
         $.ajax({
-            url: "barcode.php",
+            url: "https://tally.sa-atlantis.nl/barcode.php",
             type: "POST",
             data: {barcode : barcode},
             success: function(data) {
                 if (data != 'Barcode not found!!') {
-                    add_cart(data);
+                    return data;
                 }
             },
             error: function(data) {
