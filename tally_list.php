@@ -149,7 +149,9 @@ console.log('all is well');
 $(window).scannerDetection();
 $(window).bind('scannerDetectionComplete',function(e,data){
         console.log('complete '+data.string);
-        scanproduct(data.string);
+        product = scanproduct(data.string);
+        alert(product);
+        add_cart(product);
     })
     .bind('scannerDetectionError',function(e,data){
         console.log('detection error '+data.string);
