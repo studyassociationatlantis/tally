@@ -1,3 +1,11 @@
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="script.js"></script>
+<script src="jquery.scannerdetection.js"></script>
+
 <?php
 
 if($_SERVER["HTTPS"] != "on")
@@ -30,13 +38,6 @@ session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
-    <script src="script.js"></script>
-    <script src="jquery.scannerdetection.js"></script>
 </head>
 
 <?php
@@ -143,14 +144,12 @@ if ($result->num_rows > 0) {
 
 $(window).ready(function(){
 
-//$("#bCode").scannerDetection();
-
 console.log('all is well');
 
 $(window).scannerDetection();
 $(window).bind('scannerDetectionComplete',function(e,data){
         console.log('complete '+data.string);
-        $("#bCode").val(data.string);
+        scanproduct(data.string);
     })
     .bind('scannerDetectionError',function(e,data){
         console.log('detection error '+data.string);
@@ -159,8 +158,6 @@ $(window).bind('scannerDetectionComplete',function(e,data){
         console.log('Receive');
         console.log(data.evt.which);
     })
-
-    //$(window).scannerDetection('success');
 });
 
     $("#login_form").submit(function(){
