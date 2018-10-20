@@ -242,3 +242,24 @@ socket.onmessage = function(msgevent) {
         }
     });
 };
+
+function scanproduct(barcode){
+    if(barcode.length == 8) {
+        checkout("s" + barcode.substr(0, 7));
+    } else {
+        $.ajax({
+            url: "barcode.php",
+            type: "POST",
+            data: {barcode : barcode},
+            success: function(data) {
+                if (data != 'Barcode not found!!') {
+                    add_cart(data);
+                }
+            },
+            error: function(data) {
+                console.log(data);
+                alert("FOUT!");
+            }
+        });
+    }
+};
