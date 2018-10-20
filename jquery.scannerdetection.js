@@ -37,7 +37,7 @@
             onReceive:false, // Callback after receiving and processing a char (scanned char in parameter)
             onKeyDetect:false, // Callback after detecting a keyDown (key char in parameter) - in contrast to onReceive, this fires for non-character keys like tab, arrows, etc. too!
             timeBeforeScanTest:100, // Wait duration (ms) after keypress event to check if scanning is finished
-            avgTimeByChar:30, // Average time (ms) between 2 chars. Used to do difference between keyboard typing and scanning
+            avgTimeByChar:100, // Average time (ms) between 2 chars. Used to do difference between keyboard typing and scanning
             minLength:6, // Minimum length for a scanning
             endChar:[9,13], // Chars to remove and means end of scanning
 	        startChar:[], // Chars to remove and means start of scanning
