@@ -27,7 +27,6 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="../script.js"></script>
     <script src="../jquery.scannerdetection.js"></script>
 </head>
 
@@ -225,6 +224,27 @@ if (isset($_POST["product"], $_POST["set_amount"])) {
 
     <script type="text/javascript">
 
+    function scanproduct(barcode){
+        if(barcode.length == 8) {
+            checkout("s" + barcode.substr(0, 7));
+        } else {
+            $.ajax({
+                url: "https://tally.sa-atlantis.nl/barcode.php",
+                type: "POST",
+                data: {barcode : barcode},
+                success: function(data) {
+                    if (data != 'Barcode not found!!') {
+                        add_unit(data);
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                    alert("FOUT!");
+                }
+            });
+        }
+    };
+
         $(window).ready(function(){
 
             console.log('all is well');
@@ -232,8 +252,7 @@ if (isset($_POST["product"], $_POST["set_amount"])) {
             $(window).scannerDetection();
             $(window).bind('scannerDetectionComplete',function(e,data){
                     console.log('complete '+data.string);
-                    product = scanproduct(data.string);
-                    add_unit(product);
+                    scanproduct(data.string);
                 })
                 .bind('scannerDetectionError',function(e,data){
                     console.log('detection error '+data.string);
