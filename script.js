@@ -253,7 +253,7 @@ function scanproduct(barcode){
             data: {barcode : barcode},
             success: function(data) {
                 if (data != 'Barcode not found!!') {
-                    return data;
+                    add_cart(data);
                 }
             },
             error: function(data) {
