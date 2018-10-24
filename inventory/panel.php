@@ -20,12 +20,14 @@ session_start();
 
 <html lang="en">
 <head>
-  <title>S.A. Atlantis Tally List - Inventory</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>S.A. Atlantis Tally List - Inventory</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="../jquery.scannerdetection.js"></script>
 </head>
 
 <body>
@@ -221,6 +223,46 @@ if (isset($_POST["product"], $_POST["set_amount"])) {
     </form>
 
     <script type="text/javascript">
+
+    function scanproduct(barcode){
+        if(barcode.length == 8) {
+            checkout("s" + barcode.substr(0, 7));
+        } else {
+            $.ajax({
+                url: "https://tally.sa-atlantis.nl/barcode.php",
+                type: "POST",
+                data: {barcode : barcode},
+                success: function(data) {
+                    if (data != 'Barcode not found!!') {
+                        add_unit(data);
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                    alert("FOUT!");
+                }
+            });
+        }
+    };
+
+        $(window).ready(function(){
+
+            console.log('all is well');
+
+            $(window).scannerDetection();
+            $(window).bind('scannerDetectionComplete',function(e,data){
+                    console.log('complete '+data.string);
+                    scanproduct(data.string);
+                })
+                .bind('scannerDetectionError',function(e,data){
+                    console.log('detection error '+data.string);
+                })
+                .bind('scannerDetectionReceive',function(e,data){
+                    console.log('Receive');
+                    console.log(data.evt.which);
+                })
+        });
+
         $("#set_inventory_form").submit(function(){
 
             event.preventDefault()
