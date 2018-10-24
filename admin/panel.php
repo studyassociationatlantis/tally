@@ -38,6 +38,23 @@ ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
+function add_barcode($barcode, $product) {
+    $servername = "sa-atlantis.nl";
+    include("../saatlant_tally.php");
+    $dbname = "saatlant_tally";
+
+    $table = "tally_barcodes";
+    $sql = 'INSERT INTO '.$table.' (barcode, product) VALUES ("'.$barcode.'", "'.$product.'")';
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    
+    if($conn->query($sql) == TRUE) {
+        echo 'Barcode added successfully';
+    } else {
+        echo 'Adding barcode failed!';
+    }
+}
+
 function add_product($category, $product, $price, $image, $barcode, $unit) {
     $servername = "sa-atlantis.nl";
     include("../saatlant_tally.php");
@@ -46,13 +63,17 @@ function add_product($category, $product, $price, $image, $barcode, $unit) {
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    $sql = 'INSERT INTO '.$table.' (category, product, price, image, barcode, unit) VALUES ("'.$category.'", "'.$product.'", "'.$price.'", "'.$image.'", "'.$barcode.'", "'.$unit.'")';
+    $sql = 'INSERT INTO '.$table.' (category, product, price, image, unit) VALUES ("'.$category.'", "'.$product.'", "'.$price.'", "'.$image.'", "'.$unit.'")';
 
     if($conn->query($sql) == TRUE) {
         echo 'Product added to tally_list successfully';
     } else {
         echo 'Adding product to tally_list failed';
     }
+
+    if($barcode) {
+        add_barcode($barcode, $product);
+    }       
 
 }
 
@@ -92,20 +113,6 @@ function change_image($product, $image) {
             echo 'Image changed succesfully';
         } else {
             echo 'Changing image failed';
-        }  
-    } 
-}
-
-function change_barcode($product, $barcode) {
-    if (strlen($barcode) != 0) {
-        $table = "tally_products";
-
-        $sql = 'UPDATE '.$table.' SET barcode = "'.$barcode.'" WHERE product = "'.$product.'"';
-        
-        if($GLOBALS['conn']->query($sql) == TRUE) {
-            echo 'Barcode changed succesfully';
-        } else {
-            echo 'Changing barcode failed';
         }  
     } 
 }
@@ -160,7 +167,7 @@ if (isset($_POST["change_product"], $_POST["change_image"])) {
 }
 
 if (isset($_POST["change_product"], $_POST["change_barcode"])) {
-    change_barcode($_POST["change_product"], $_POST["change_barcode"]);
+    add_barcode($_POST["change_barcode"], $_POST["change_product"]);
 }
 
 if (isset($_POST["change_product"], $_POST["change_unit"])) {
@@ -326,7 +333,7 @@ function showfield2(name){
             echo '<i>Enter new price in euros</i><br>';
             echo 'Image: <input id="change_image" type="url" name="url">';
             echo '<i>Enter new image URL</i><br>';
-            echo 'Barcode: <input id="change_barcode" type="url" name="barcode">';
+            echo 'Barcode: <input id="change_barcode" type="text" name="barcode">';
             echo '<i>Enter new barcode number</i><br>';
             echo 'Unit: <input id="change_unit" type="number" name="unit">';
             echo '<i>Enter new unit size (amount of products in box/crate)</i><br><br>';
