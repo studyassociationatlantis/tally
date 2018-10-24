@@ -4,7 +4,7 @@ function barcode($code) {
     $servername = "localhost";
     include("saatlant_tally.php");
     $dbname = "saatlant_tally";
-    $table = "tally_products";
+    $table = "tally_barcodes";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
