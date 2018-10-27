@@ -42,39 +42,44 @@ function add_barcode($barcode, $product) {
     $servername = "sa-atlantis.nl";
     include("../saatlant_tally.php");
     $dbname = "saatlant_tally";
-
     $table = "tally_barcodes";
-    $sql = 'INSERT INTO '.$table.' (barcode, product) VALUES ("'.$barcode.'", "'.$product.'")';
 
     $conn = new mysqli($servername, $username, $password, $dbname);
-    
-    if($conn->query($sql) == TRUE) {
-        echo 'Barcode added successfully';
+
+    $sql = 'SELECT * FROM '.$table.' WHERE barcode = "'.$barcode.'"';
+
+    $result = $conn->query($sql);
+    if($result->num_rows == 0) {
+        $sql = 'INSERT INTO '.$table.' (barcode, product) VALUES ("'.$barcode.'", "'.$product.'")';        
+        if($conn->query($sql) == TRUE) {
+            echo 'Barcode added successfully';
+        } else {
+            echo 'Adding barcode failed!';
+        }
     } else {
-        echo 'Adding barcode failed!';
+        echo 'Barcode already in use!';
     }
 }
 
 function add_product($category, $product, $price, $image, $barcode, $unit) {
-    $servername = "sa-atlantis.nl";
-    include("../saatlant_tally.php");
-    $dbname = "saatlant_tally";
-    $table = "tally_products";
+        $servername = "sa-atlantis.nl";
+        include("../saatlant_tally.php");
+        $dbname = "saatlant_tally";
+        $table = "tally_products";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-    $sql = 'INSERT INTO '.$table.' (category, product, price, image, unit) VALUES ("'.$category.'", "'.$product.'", "'.$price.'", "'.$image.'", "'.$unit.'")';
+        $sql = 'INSERT INTO '.$table.' (category, product, price, image, unit) VALUES ("'.$category.'", "'.$product.'", "'.$price.'", "'.$image.'", "'.$unit.'")';
 
-    if($conn->query($sql) == TRUE) {
-        echo 'Product added to tally_list successfully';
-    } else {
-        echo 'Adding product to tally_list failed';
-    }
+        if($conn->query($sql) == TRUE) {
+            echo 'Product added to tally_list successfully';
+        } else {
+            echo 'Adding product to tally_list failed';
+        }
 
-    if($barcode) {
-        add_barcode($barcode, $product);
-    }       
-
+        if($barcode) {
+            add_barcode($barcode, $product);
+        }    
 }
 
 function change_price($product, $price) {
