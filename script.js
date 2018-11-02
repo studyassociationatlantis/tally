@@ -242,3 +242,20 @@ socket.onmessage = function(msgevent) {
         }
     });
 };
+
+function scanproduct(barcode){
+    $.ajax({
+        url: "https://tally.sa-atlantis.nl/barcode.php",
+        type: "POST",
+        data: {barcode : barcode},
+        success: function(data) {
+            if (data != 'Barcode not found!!') {
+                add_cart(data);
+            }
+        },
+        error: function(data) {
+            console.log(data);
+            alert("FOUT!");
+        }
+    });
+};
