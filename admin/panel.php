@@ -38,22 +38,48 @@ ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
-function add_product($category, $product, $price, $image, $unit) {
+function add_barcode($barcode, $product) {
     $servername = "sa-atlantis.nl";
     include("../saatlant_tally.php");
     $dbname = "saatlant_tally";
-    $table = "tally_products";
+    $table = "tally_barcodes";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    $sql = 'INSERT INTO '.$table.' (category, product, price, image, unit) VALUES ("'.$category.'", "'.$product.'", "'.$price.'", "'.$image.'","'.$unit.'")';
+    $sql = 'SELECT * FROM '.$table.' WHERE barcode = "'.$barcode.'"';
 
-    if($conn->query($sql) == TRUE) {
-        echo 'Product added to tally_list successfully';
+    $result = $conn->query($sql);
+    if($result->num_rows == 0) {
+        $sql = 'INSERT INTO '.$table.' (barcode, product) VALUES ("'.$barcode.'", "'.$product.'")';        
+        if($conn->query($sql) == TRUE) {
+            echo 'Barcode added successfully';
+        } else {
+            echo 'Adding barcode failed!';
+        }
     } else {
-        echo 'Adding product to tally_list failed';
+        echo 'Barcode already in use!';
     }
+}
 
+function add_product($category, $product, $price, $image, $barcode, $unit) {
+        $servername = "sa-atlantis.nl";
+        include("../saatlant_tally.php");
+        $dbname = "saatlant_tally";
+        $table = "tally_products";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        $sql = 'INSERT INTO '.$table.' (category, product, price, image, unit) VALUES ("'.$category.'", "'.$product.'", "'.$price.'", "'.$image.'", "'.$unit.'")';
+
+        if($conn->query($sql) == TRUE) {
+            echo 'Product added to tally_list successfully';
+        } else {
+            echo 'Adding product to tally_list failed';
+        }
+
+        if($barcode) {
+            add_barcode($barcode, $product);
+        }    
 }
 
 function change_price($product, $price) {
@@ -145,6 +171,10 @@ if (isset($_POST["change_product"], $_POST["change_image"])) {
     change_image($_POST["change_product"], $_POST["change_image"]);
 }
 
+if (isset($_POST["change_product"], $_POST["change_barcode"])) {
+    add_barcode($_POST["change_barcode"], $_POST["change_product"]);
+}
+
 if (isset($_POST["change_product"], $_POST["change_unit"])) {
     change_unit($_POST["change_product"], $_POST["change_unit"]);
 }
@@ -162,7 +192,7 @@ if (isset($_POST["product3"])) {
 }
 
 if (isset($_POST['category'], $_POST['product'], $_POST['image'], $_POST['unit'])) {
-    add_product($_POST['category'], $_POST['product'], $_POST['price'], $_POST['image'], $_POST['unit']);
+    add_product($_POST['category'], $_POST['product'], $_POST['price'], $_POST['image'], $_POST['barcode'], $_POST['unit']);
 }
 
 function download() {
@@ -270,6 +300,8 @@ function showfield(name){
         <i>Enter image URL</i><br>
         Unit: <input id="unit" type="number" name="unit">
         <i>Enter unit size (amount of products in box/crate</i><br>
+        Barcode: <input id="barcode" type="text" name="barcode">
+        <i>Enter barcode number</i><br>
         <input id="submit" type="submit" value="Submit">
         </form>
 </div>
@@ -306,6 +338,8 @@ function showfield2(name){
             echo '<i>Enter new price in euros</i><br>';
             echo 'Image: <input id="change_image" type="url" name="url">';
             echo '<i>Enter new image URL</i><br>';
+            echo 'Barcode: <input id="change_barcode" type="text" name="barcode">';
+            echo '<i>Enter new barcode number</i><br>';
             echo 'Unit: <input id="change_unit" type="number" name="unit">';
             echo '<i>Enter new unit size (amount of products in box/crate)</i><br><br>';
             echo 'Product name: <input id="product_name" type="text" name="product_name">';
@@ -343,6 +377,7 @@ function showfield2(name){
         var product = $("#change_product").val();
         var price = $("#change_price").val();
         var image = $("#change_image").val();
+        var barcode = $("#change_barcode").val();
         var unit = $("#change_unit").val();
         var product_name = $("#product_name").val();
 
@@ -355,7 +390,7 @@ function showfield2(name){
         $.ajax({
             url: "panel.php",
             type: "POST",
-            data: {change_product : product, change_price : price, change_image : image, change_unit : unit, product_name : product_name, change_category : category},
+            data: {change_product : product, change_price : price, change_image : image, change_barcode : barcode, change_unit : unit, product_name : product_name, change_category : category},
             success: function(data) {
                 console.log(data)
             },
@@ -434,12 +469,13 @@ Click <a target="_blank" href="https://tally.sa-atlantis.nl/inventory">here</a> 
         var product = $("#product").val();
         var price = $("#price").val();
         var image = $("#image").val();
+        var barcode = $("#barcode").val();
         var unit = $("#unit").val();
 
         $.ajax({
             url: "panel.php",
             type: "POST",
-            data: {category : category, product : product, price : price, image : image, unit : unit},
+            data: {category : category, product : product, price : price, image : image, barcode : barcode, unit : unit},
             success: function(data) {
                 console.log(data)
             },
