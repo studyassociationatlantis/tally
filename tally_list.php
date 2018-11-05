@@ -165,6 +165,10 @@ $(window).bind('scannerDetectionComplete',function(e,data){
         event.preventDefault()
 
         var SN = $("#SN").val().toLowerCase();
+
+        if (SN.length == 8) {
+            SN = SN.substr(1, 8);
+        }
         var password = $("#password").val();
 
         $.ajax({
@@ -190,6 +194,10 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 
         var SN = $("#SN2").val();
         if (SN.length == 8) {
+            SN = SN.substr(1, 8);
+        }
+        
+        if (SN.length == 7) {
             checkout(SN);
         } else {
             alert("Invalid student number (Error 420)")
