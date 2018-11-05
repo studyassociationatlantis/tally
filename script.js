@@ -208,7 +208,7 @@ socket.onmessage = function(msgevent) {
                                 emptycart();
                                 if (data.length > 0) {
                                     if (data == "Purchase succesful") {
-                                        if (user == "s2004933") {
+                                        if (user == "2004933") {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation2").style.display = "block";
                                             setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)                                            
