@@ -103,7 +103,7 @@ function checkout(user) {
     if (cart.length == 0) {
         alert('No items selected')
     } else {
-        if (user.length == 8) {
+        if (user.length == 7) {
             items = [];
             amounts = [];
 
@@ -172,7 +172,7 @@ socket.onmessage = function(msgevent) {
             if (data == 'Card not registered!') {
                 alert(data);
                 SN = prompt("Student number:");
-                if (SN.length == 8) {
+                if (SN.length == 7) {
                     $.ajax({
                         url: "register_card.php",
                         type: "POST",
@@ -191,7 +191,7 @@ socket.onmessage = function(msgevent) {
             } else {
                 user = data
                 if (cart.length > 0) {
-                    if (user.length == 8) {
+                    if (user.length == 7) {
                         items = [];
                         amounts = [];
 
