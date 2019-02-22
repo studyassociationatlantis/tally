@@ -10,7 +10,14 @@ session_start(); // Starting Session
 
 function verify($SN, $pass) {
 if ($SN == "x1234567") {
-    if ($pass == "hanl0meth0nt") {
+    if ($pass == "hanl0met2h0nten") {
+        $_SESSION['session_SN'] = $SN;
+        header("location: tally_list.php");
+    }
+}
+
+if ($SN == "auke") {
+    if ($pass == "iseenkutjong") {
         $_SESSION['session_SN'] = $SN;
         header("location: tally_list.php");
     }
