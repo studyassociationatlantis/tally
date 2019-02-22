@@ -1,57 +1,13 @@
-[27-Aug-2018 11:54:53 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[27-Aug-2018 11:54:53 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[27-Aug-2018 11:54:53 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[27-Aug-2018 12:27:34 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[27-Aug-2018 12:27:34 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[27-Aug-2018 12:27:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[27-Aug-2018 12:27:55 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[27-Aug-2018 12:27:55 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[27-Aug-2018 12:27:55 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[27-Aug-2018 12:28:15 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[27-Aug-2018 12:28:15 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[27-Aug-2018 12:28:15 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[27-Aug-2018 12:28:15 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[27-Aug-2018 12:44:50 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[27-Aug-2018 14:51:32 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[27-Aug-2018 14:51:32 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[27-Aug-2018 14:51:32 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[27-Aug-2018 14:51:40 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[27-Aug-2018 14:51:40 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[27-Aug-2018 14:51:40 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[27-Aug-2018 14:52:11 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[27-Aug-2018 14:52:11 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[27-Aug-2018 14:52:11 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[27-Aug-2018 14:52:11 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[27-Aug-2018 20:55:24 Europe/Berlin] PHP Notice:  Undefined index: HTTPS in /home/saatlant/public_html/subdomains/tally/index.php on line 3
-[27-Aug-2018 20:55:31 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[27-Aug-2018 20:55:31 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[27-Aug-2018 20:55:31 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[27-Aug-2018 20:55:31 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[28-Aug-2018 12:43:52 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[28-Aug-2018 12:43:52 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[28-Aug-2018 12:43:52 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[28-Aug-2018 12:44:01 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[28-Aug-2018 12:44:01 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[28-Aug-2018 12:44:01 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[28-Aug-2018 12:44:01 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[28-Aug-2018 16:57:34 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[28-Aug-2018 16:57:34 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[28-Aug-2018 16:57:34 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[28-Aug-2018 16:57:34 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[28-Aug-2018 20:52:06 Europe/Berlin] PHP Notice:  Undefined index: HTTPS in /home/saatlant/public_html/subdomains/tally/index.php on line 3
-[28-Aug-2018 20:52:26 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[28-Aug-2018 20:52:26 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[28-Aug-2018 20:52:26 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[28-Aug-2018 20:52:26 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[28-Aug-2018 20:53:03 Europe/Berlin] PHP Notice:  Undefined index: HTTPS in /home/saatlant/public_html/subdomains/tally/index.php on line 3
-[28-Aug-2018 20:53:03 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[29-Aug-2018 10:06:46 Europe/Berlin] PHP Notice:  Undefined index: HTTPS in /home/saatlant/public_html/subdomains/tally/index.php on line 3
-[29-Aug-2018 10:06:53 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[29-Aug-2018 10:06:53 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[29-Aug-2018 10:06:53 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[29-Aug-2018 10:06:53 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
-[29-Aug-2018 10:09:39 Europe/Berlin] PHP Notice:  Undefined index: HTTPS in /home/saatlant/public_html/subdomains/tally/index.php on line 3
-[29-Aug-2018 10:09:41 Europe/Berlin] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'saatla1q_members'@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 26
-[29-Aug-2018 10:09:41 Europe/Berlin] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 29
-[29-Aug-2018 10:09:41 Europe/Berlin] PHP Notice:  Trying to get property of non-object in /home/saatlant/public_html/subdomains/tally/login.php on line 31
-[29-Aug-2018 10:09:41 Europe/Berlin] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 65
+[22-Feb-2019 16:19:47 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 32
+[22-Feb-2019 16:19:47 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 35
+[22-Feb-2019 16:19:54 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 32
+[22-Feb-2019 16:19:54 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 35
+[22-Feb-2019 16:20:03 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 32
+[22-Feb-2019 16:20:03 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 35
+[22-Feb-2019 16:20:19 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 32
+[22-Feb-2019 16:20:19 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 35
+[22-Feb-2019 16:20:55 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: YES) in /home/saatlant/public_html/subdomains/tally/login.php on line 32
+[22-Feb-2019 16:20:55 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/saatlant/public_html/subdomains/tally/login.php on line 35
+[22-Feb-2019 16:20:55 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/saatlant/public_html/subdomains/tally/tally_list.php:1) in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 15
+[22-Feb-2019 16:20:55 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/saatlant/public_html/subdomains/tally/tally_list.php:1) in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 44
+[22-Feb-2019 16:20:55 UTC] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 66
