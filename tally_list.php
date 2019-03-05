@@ -23,6 +23,8 @@ function getToken($code, $state) {
       CURLOPT_POSTFIELDS => array(
         'grant_type' => 'authorization_code',
         'content_type' => 'application/x-www-form-urlencoded',
+        'code' => $code,
+        'state' => $state,
         'authorization' => 'Basic '.$auth
       )
     ));
