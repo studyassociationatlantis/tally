@@ -144,7 +144,7 @@ function checkout(user) {
                 }
             });
         } else {
-            alert("Student number invalid (Error 422)")
+            alert("Student number invalid (Error 422-1)")
         }
     }
 }
@@ -232,7 +232,7 @@ socket.onmessage = function(msgevent) {
                             }
                         });
                     } else {
-                        alert("Student number invalid (Error 422)")
+                        alert("Student number invalid (Error 422-2)")
                     }
                 }
             }
