@@ -9,22 +9,14 @@ if($_SERVER["HTTPS"] != "on")
 session_start(); // Starting Session
 
 function verify($SN, $pass) {
-include("login_details.php");
-
-if ($SN == $normal_login) {
-    if ($pass == $normal_pass) {
+if ($SN == "x1234567") {
+    if ($pass == "hanl0meth0nt") {
         $_SESSION['session_SN'] = $SN;
         header("location: tally_list.php");
     }
 }
 
-if ($SN == $aukesuser) {
-    if ($pass == $aukespassword) {
-        $_SESSION['session_SN'] = $SN;
-        header("location: tally_list.php");
-    }
-}
-
+    
     $servername = "localhost";
     include("saatlant_members.php");
     $dbname = "saatla1q_members";
