@@ -9,15 +9,17 @@ if($_SERVER["HTTPS"] != "on")
 session_start(); // Starting Session
 
 function verify($SN, $pass) {
-if ($SN == "x1234567") {
-    if ($pass == "hanl0met2h0nten") {
+include("login_details.php");
+
+if ($SN == $normal_login) {
+    if ($pass == $normal_pass) {
         $_SESSION['session_SN'] = $SN;
         header("location: tally_list.php");
     }
 }
 
-if ($SN == "auke") {
-    if ($pass == "iseenkutjong") {
+if ($SN == $aukesuser) {
+    if ($pass == $aukespassword) {
         $_SESSION['session_SN'] = $SN;
         header("location: tally_list.php");
     }
