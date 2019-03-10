@@ -2,6 +2,58 @@
 
 <?php
 
+function getToken($code, $state) {
+    $redirect_uri = "https://tally.sa-atlantis.nl/tally_list.php";
+    $url = "https://www.sa-atlantis.nl/oauth/token";
+    #Includes the variables $client_id and $client_secret
+    include("oauth.php");
+
+    $curl = curl_init();
+
+    $auth = base64_encode($client_id.":".$client_secret);
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => $url,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => array(
+        'grant_type' => 'authorization_code',
+        'content_type' => 'application/x-www-form-urlencoded',
+        'code' => $code,
+        'state' => $state,
+        'authorization' => 'Basic '.$auth
+      )
+    ));
+
+    $headers = [
+        'content_type: application/x-www-form-urlencoded',
+        'authorization: Basic ' . $auth
+    ];
+
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    $info = curl_getinfo($curl);
+    //echo $info;
+    
+    curl_close($curl);
+    
+    if ($err) {
+      echo "cURL Error #:" . $err['message'];
+    } else {
+        $data = json_decode($response);
+
+        $user = $data->name;
+        return $user;
+    }
+}
+
 if($_SERVER["HTTPS"] != "on")
 {
     header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
@@ -14,12 +66,17 @@ ini_set('session.gc_maxlifetime', $timeout);
 session_set_cookie_params($timeout);
 session_start();
 
-    if (!isset($_SESSION['session_SN'])) {
+    if (!isset($_GET["code"])) {
         echo 'Connection attempt failed <br>';
         die();
     } else {
-        $GLOBALS['session_SN'] = $_SESSION['session_SN'];
-        echo '<script type="text/javascript">make_session("'.$_SESSION["session_SN"].'")</script>';
+        if ($_GET["state"] == "92") {
+            $user = getToken($_GET["code"], $_GET["state"] == "92");
+            $GLOBALS['session_SN'] = $user;
+            echo '<script type="text/javascript">make_session("'.$user.'")</script>';
+        } else {
+            echo 'Invalid state!';
+        }
     }
 ?>
 
