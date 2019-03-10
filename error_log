@@ -1,0 +1,4 @@
+[10-Mar-2019 20:35:20 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/saatlant/public_html/subdomains/tally/tally_list.php:1) in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 67
+[10-Mar-2019 20:35:57 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/saatlant/public_html/subdomains/tally/tally_list.php:1) in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 67
+[10-Mar-2019 20:35:58 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/saatlant/public_html/subdomains/tally/tally_list.php:1) in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 101
+[10-Mar-2019 20:35:58 UTC] PHP Warning:  Creating default object from empty value in /home/saatlant/public_html/subdomains/tally/tally_list.php on line 123
