@@ -2,7 +2,6 @@
 
 <?php
 
-// Function to get user name using oAuth verification on Congressus
 function getToken($code, $state) {
     $redirect_uri = "https://tally.sa-atlantis.nl/tally_list.php";
     $url = "https://www.sa-atlantis.nl/oauth/token";
