@@ -7,7 +7,7 @@ body {
     font-family: "roboto";
 }
 
-#confirmation {
+#confirmation, #denial {
     min-width:350px;
     min-height:350px;
     max-width:350px;
