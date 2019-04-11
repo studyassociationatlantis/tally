@@ -100,6 +100,7 @@ function log(action, success, info) {
 }
 
 function checkout(user) {
+    failure = true;
     if (cart.length != 0) {
         if (user.length == 7) {
             items = [];
@@ -122,12 +123,12 @@ function checkout(user) {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation2").style.display = "block";
                                 setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
-                                return;                                         
+                                failure = false;                                     
                             } else {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation").style.display = "block";
                                 setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
-                                return;
+                                failure = false;
                             }
                         }
                     }
@@ -137,13 +138,14 @@ function checkout(user) {
                 }
             });
         }
+        if (failure) {
+            log("checkout", 0, user + items + amounts);
+            document.getElementById("myPopup2").style.display = "none";
+            document.getElementById("denial").style.display = "block";
+            setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
+            return;
+        }
     }
-    log("checkout", 0, data + user + items + amounts);
-
-    document.getElementById("myPopup2").style.display = "none";
-    document.getElementById("denial").style.display = "block";
-    setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
-    return;
 }
 
 function random() {
@@ -206,12 +208,12 @@ socket.onmessage = function(msgevent) {
                                         if (user == "2004933") {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation2").style.display = "block";
-                                            setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
+                                            setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000);
                                             return;                                            
                                         } else {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation").style.display = "block";
-                                            setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
+                                            setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000);
                                             return;
                                         }
                                     }
@@ -223,7 +225,7 @@ socket.onmessage = function(msgevent) {
                         });
                     }
                 }
-                log("checkout", 0, data + user + items + amounts);
+                log("checkout", 0, user + items + amounts);
                 document.getElementById("myPopup2").style.display = "none";
                 document.getElementById("denial").style.display = "block";
                 setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)

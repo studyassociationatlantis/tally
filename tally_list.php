@@ -261,7 +261,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
         }
         
         if (SN.length == 7) {
-            checkout(SN);
+            checkout(SN);        
             document.getElementById("checkout_form").reset();
         } else {
             document.getElementById("denial").style.display = "block";
