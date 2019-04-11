@@ -100,9 +100,7 @@ function log(action, success, info) {
 }
 
 function checkout(user) {
-    if (cart.length == 0) {
-        alert('No items selected')
-    } else {
+    if (cart.length != 0) {
         if (user.length == 7) {
             items = [];
             amounts = [];
@@ -123,30 +121,29 @@ function checkout(user) {
                             if (user == "2004933") {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation2").style.display = "block";
-                                setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)                                            
+                                setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
+                                return;                                         
                             } else {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation").style.display = "block";
                                 setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
-                            }
-                        } else {
-                            if (data == 'Student number not registered') {
-                                log("checkout", 0, data + user + items + amounts);
-                            } else {
-                                alert(data);
+                                return;
                             }
                         }
                     }
                 },
                 error: function(data) {
                     console.log(data)
-                    alert("Student number invalid (Error 421)")
                 }
             });
-        } else {
-            alert("Student number invalid (Error 422-1)")
         }
     }
+    log("checkout", 0, data + user + items + amounts);
+
+    document.getElementById("myPopup2").style.display = "none";
+    document.getElementById("denial").style.display = "block";
+    setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
+    return;
 }
 
 function random() {
@@ -187,14 +184,12 @@ socket.onmessage = function(msgevent) {
                 } else {
                     alert("Student number not valid!")
                 }
-
             } else {
                 user = data
                 if (cart.length > 0) {
                     if (user.length == 7) {
                         items = [];
                         amounts = [];
-
                         for (i=0; i<cart.length; i++) {
                             items = items.concat(cart[i][0]);
                             amounts = amounts.concat(cart[i][1]);
@@ -211,30 +206,28 @@ socket.onmessage = function(msgevent) {
                                         if (user == "2004933") {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation2").style.display = "block";
-                                            setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)                                            
+                                            setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
+                                            return;                                            
                                         } else {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation").style.display = "block";
                                             setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
-                                        }
-                                    } else {
-                                        if (data == 'Student number not registered') {
-                                            log("checkout", 0, data + user + items + amounts);
-                                        } else {
-                                            alert(data);
+                                            return;
                                         }
                                     }
                                 }
                             },
                             error: function(data) {
                                 console.log(data)
-                                alert("Student number invalid (Error 421)")
                             }
                         });
-                    } else {
-                        alert("Student number invalid (Error 422-2)")
                     }
                 }
+                log("checkout", 0, data + user + items + amounts);
+                document.getElementById("myPopup2").style.display = "none";
+                document.getElementById("denial").style.display = "block";
+                setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
+                return;
             }
         },
         error: function(data) {

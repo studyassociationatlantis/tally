@@ -153,6 +153,12 @@ if ($result->num_rows > 0) {
     </div>
 </div>
 
+<div id="denial" style="display: none;">
+    <div>
+        <img src="images/sad_fish.gif" style='height: 100%; width: 100%;'>
+    </div>
+</div>
+
 <div id="confirmation2" style="display: none;">
     <div>
         <img src="images/goldstrike.png" style='height: 100%; width: 100%;'>
@@ -256,12 +262,12 @@ $(window).bind('scannerDetectionComplete',function(e,data){
         
         if (SN.length == 7) {
             checkout(SN);
+            document.getElementById("checkout_form").reset();
         } else {
-            alert("Invalid student number (Error 420)")
+            document.getElementById("denial").style.display = "block";
+            setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
             log("checkout", 0, "checkout fail" + SN);
         }
-
-        document.getElementById("checkout_form").reset();
     });
     
     $("#feedback_form").submit(function(){
