@@ -261,13 +261,13 @@ $(window).bind('scannerDetectionComplete',function(e,data){
         }
         
         if (SN.length == 7) {
-            checkout(SN);        
+            checkout(SN);
             document.getElementById("checkout_form").reset();
         } else {
             document.getElementById("denial").style.display = "block";
             setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
             log("checkout", 0, "checkout fail" + SN);
-        }
+        }        
     });
     
     $("#feedback_form").submit(function(){
