@@ -99,6 +99,12 @@ function log(action, success, info) {
     });    
 }
 
+function show_denial_image() {
+    document.getElementById("denial").style.display = "block";
+    setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
+    log("checkout", 0, "checkout fail" + SN);
+}
+
 function checkout(user) {
     if (cart.length != 0) {
         if (user.length == 7) {
@@ -115,35 +121,34 @@ function checkout(user) {
                 type: "POST",
                 data: {user : user, items : items, amounts : amounts, session : session},
                 success: function(data) {
-                    emptycart();
                     if (data.length > 0) {
                         if (data == "Purchase succesful") {
+                            emptycart();
                             if (user == "2004933") {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation2").style.display = "block";
-                                setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
-                                return;                                         
+                                setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)                                   
                             } else {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation").style.display = "block";
                                 setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
-                                return;
                             }
+                        } else {
+                            show_denial_image();
                         }
+                    } else {
+                        show_denial_image();
                     }
                 },
                 error: function(data) {
                     console.log(data)
+                    show_denial_image();
                 }
             });
         }
+    } else {
+        show_denial_image();
     }
-    log("checkout", 0, data + user + items + amounts);
-
-    document.getElementById("myPopup2").style.display = "none";
-    document.getElementById("denial").style.display = "block";
-    setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
-    return;
 }
 
 function random() {
@@ -200,21 +205,23 @@ socket.onmessage = function(msgevent) {
                             type: "POST",
                             data: {user : user, items : items, amounts : amounts, session : session},
                             success: function(data) {
-                                emptycart();
                                 if (data.length > 0) {
+                                    emptycart();
                                     if (data == "Purchase succesful") {
                                         if (user == "2004933") {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation2").style.display = "block";
-                                            setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
-                                            return;                                            
+                                            setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000);                                          
                                         } else {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation").style.display = "block";
-                                            setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
-                                            return;
+                                            setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000);
                                         }
+                                    } else {
+                                        show_denial_image();
                                     }
+                                } else {
+                                    show_denial_image();
                                 }
                             },
                             error: function(data) {
@@ -222,11 +229,10 @@ socket.onmessage = function(msgevent) {
                             }
                         });
                     }
+                } else {
+                    show_denial_image();
                 }
-                log("checkout", 0, data + user + items + amounts);
-                document.getElementById("myPopup2").style.display = "none";
-                document.getElementById("denial").style.display = "block";
-                setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
+
                 return;
             }
         },
