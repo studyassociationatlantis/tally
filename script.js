@@ -28,7 +28,7 @@ function spawn_buttons(category) {
     var ind = get_products(category);
 
     for (i = 0; i < ind.length; i++) {
-        document.getElementById("btn" + (i + 1)).innerHTML = '<a href="#" onclick=\'add_cart("'+products[ind[i]].product+'")\' class="btn btn-default" style="background-image: url('+products[ind[i]].image+')"></a><br>'+products[ind[i]].product+'   €'+products[ind[i]].price;
+        document.getElementById("btn" + (i + 1)).innerHTML = '<a href="#" onclick=\'add_cart("'+products[ind[i]].product+'")\' class="btn btn-default" style="background-image: url('+products[ind[i]].image+')"></a><br>'+products[ind[i]].product+' €'+products[ind[i]].price;
     } 
     for (i = ind.length; i < 12; i++) {
         document.getElementById("btn" + (i + 1)).innerHTML = '';
