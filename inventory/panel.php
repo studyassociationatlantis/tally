@@ -98,7 +98,7 @@ if (isset($_POST["product"], $_POST["set_amount"])) {
     <?php
         $table = "tally_products";
 
-        $sql = 'SELECT product, inventory, unit FROM '.$table.'';
+        $sql = 'SELECT product, inventory, unit FROM '.$table.' ORDER BY product ASC';
         $result = $GLOBALS['conn']->query($sql);
 
         if ($result->num_rows > 0) {
@@ -150,7 +150,7 @@ if (isset($_POST["product"], $_POST["set_amount"])) {
         <?php
             $table = "tally_products";
 
-            $sql = 'SELECT product FROM '.$table.'';
+            $sql = 'SELECT product FROM '.$table.' ORDER BY product ASC';
 
             $result = $GLOBALS['conn']->query($sql);
 
@@ -214,7 +214,7 @@ if (isset($_POST["product"], $_POST["set_amount"])) {
         <?php
             $table = "tally_products";
 
-            $sql = 'SELECT product FROM '.$table.'';
+            $sql = 'SELECT product FROM '.$table.' ORDER BY product ASC';
 
             $result = $GLOBALS['conn']->query($sql);
 

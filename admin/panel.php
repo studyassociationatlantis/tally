@@ -212,7 +212,7 @@ function download() {
             echo '<tr>';
             echo '<td>'.$row["student_number"].'</td>';
             
-            $sql = 'SELECT total FROM '.$table.' WHERE student_number = "'.$row["student_number"].'"';
+            $sql = 'SELECT total FROM '.$table.' WHERE student_number = "'.$row["student_number"].'" ORDER BY student_number ASC';
             $result2 = $GLOBALS['conn']->query($sql);
 
             if ($result2->num_rows > 0){
@@ -273,7 +273,7 @@ function showfield(name){
             <?php
             $table = "tally_products";
 
-            $sql = 'SELECT DISTINCT category FROM '.$table.'';
+            $sql = 'SELECT DISTINCT category FROM '.$table.' ORDER BY category ASC';
             $result = $GLOBALS['conn']->query($sql);
 
             if ($result->num_rows > 0) {
@@ -322,7 +322,7 @@ function showfield2(name){
     <?php
         $table = "tally_products";
 
-        $sql = 'SELECT DISTINCT product FROM '.$table.'';
+        $sql = 'SELECT DISTINCT product FROM '.$table.' ORDER BY product ASC';
         $result = $GLOBALS['conn']->query($sql);
 
         if ($result->num_rows > 0) {
@@ -345,7 +345,7 @@ function showfield2(name){
             echo 'Product name: <input id="product_name" type="text" name="product_name">';
             echo '<i>Enter new product name</i><br>';
 
-            $sql ='SELECT DISTINCT category FROM '.$table;
+            $sql ='SELECT DISTINCT category FROM '.$table.' ORDER BY category ASC';
             $result = $GLOBALS['conn']->query($sql);
 
             if ($result->num_rows > 0) {

@@ -113,7 +113,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, category, product, price, random, image FROM tally_products";
+$sql = "SELECT id, category, product, price, random, image FROM tally_products ORDER BY category ASC, product ASC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -322,7 +322,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 
         <?php
 
-        $sql = "SELECT DISTINCT category FROM tally_products";
+        $sql = "SELECT DISTINCT category FROM tally_products ORDER BY category ASC";
         $result = $conn->query($sql);
 
         if ($result ->num_rows > 0) {
