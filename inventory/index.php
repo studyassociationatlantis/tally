@@ -18,8 +18,9 @@ if (isset($_SESSION['username'], $_SESSION['password'])) {
 <html lang="en">
 <titel>S.A. Atlantis Tally List - Inventory Panel</title>
 
-<header>
-</header>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 <body>
 
