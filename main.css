@@ -34,6 +34,11 @@ body {
     height: 70%;
 }
 
+.container-fluid {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 .Menu_Button {
     background-color: blue;
     height: 15%;
