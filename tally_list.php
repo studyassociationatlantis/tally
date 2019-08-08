@@ -317,7 +317,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
     </div>
 </div>
 
-<div class="container-fluid" style="height: 100%;">
+<div class="container" style="height: 100%;">
     <div class="btn-group btn-group-justified">
 
         <?php
@@ -337,10 +337,10 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 
     </div>
 
-<div id="main_container" class="container-fluid" style='height=100%;'>
-    <div id="product_group" class="container-fluid"></div>
+<div id="main_container" class="container" style='height=100%;'>
+    <div id="product_group" class="container"></div>
 
-    <div id="product_container" class="container-fluid col-sm-10">
+    <div id="product_container" class="container col-sm-10">
             <div class="row btn_row">
                 <div class="col-sm-3" id="btn1"></div>
                 <div class="col-sm-3" id="btn2"></div>
