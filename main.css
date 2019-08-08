@@ -82,7 +82,6 @@ body {
 .btn {
     height: 80%;
     width: 100%;
-    line-height: normal;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -91,7 +90,7 @@ body {
 }
 
 .ftr-btn {
-    height: 80%;
+    height: 100%;
 }
 
 .col-sm-3 {

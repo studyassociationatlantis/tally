@@ -380,13 +380,13 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 <footer class="footer">
     <div class="container">
         <div class=col-sm-4 style="text-align: center;">
-           <a href="#myPopup3" data-rel ="popup" class="btn btn-default ftr-btn">Feedback</a>
+           <a href="#myPopup3" data-rel ="popup" class="btn btn-default ftr-btn" style="line-height: 48px;">Feedback</a>
         </div>
         <div class=col-sm-4 style="text-align: center;">
             S.A. Atlantis Tally List
         </div>
         <div class=col-sm-4 id="checkout">
-            <a href="#myPopup2" data-rel="popup" class="btn btn-default ftr-btn" id="open_checkout">Checkout</a>
+            <a href="#myPopup2" data-rel="popup" class="btn btn-default ftr-btn" id="open_checkout" style="line-height: 48px;">Checkout</a>
         </div>
 </footer>
 
