@@ -379,16 +379,13 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 
 <footer class="footer">
     <div class="container">
-        <div class=col-sm-2>
-            <a href="#myPopup" data-rel="popup" class="btn btn-default ftr-btn">Register</a> 
-        </div>
-        <div class=col-sm-2 style="text-align: center;">
+        <div class=col-sm-4 style="text-align: center;">
            <a href="#myPopup3" data-rel ="popup" class="btn btn-default ftr-btn">Feedback</a>
         </div>
         <div class=col-sm-4 style="text-align: center;">
             S.A. Atlantis Tally List
         </div>
-        <div class=col-sm-2 id="checkout">
+        <div class=col-sm-4 id="checkout">
             <a href="#myPopup2" data-rel="popup" class="btn btn-default ftr-btn" id="open_checkout">Checkout</a>
         </div>
 </footer>
