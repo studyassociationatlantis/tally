@@ -317,7 +317,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
     </div>
 </div>
 
-<div class="container" style="height: 100%;">
+<div class="container" style="height: 100%; min-height:">
     <div class="btn-group btn-group-justified">
 
         <?php
@@ -337,7 +337,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 
     </div>
 
-<div id="main_container" class="container" style='height=100%;'>
+<div id="main_container" class="container" style='height=100%; min-height: 100%; padding-bottom: 60px;'>
     <div id="product_group" class="container"></div>
 
     <div id="product_container" class="container col-sm-10">
