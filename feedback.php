@@ -5,7 +5,7 @@ if($_POST){
     $msg = $_POST['msg'];
 
 
-mail("r.verbeek@student.utwente.nl", "Atlantis Tally List: " .$name, $msg);
+mail("robzelluf@hotmail.com", "Atlantis Tally List: " .$name, $msg);
 mail("treasurer@sa-atlantis.nl", "Atlantis Tally List: " .$name, $msg);
 }
 ?>

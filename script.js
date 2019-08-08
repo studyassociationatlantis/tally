@@ -49,8 +49,10 @@ function add_cart(product) {
             cart[i][1] += 1;
             break
         } else if (i == cart.length - 1) {
-            cart[i + 1] = [product, 1];
-            break
+            if (cart.length <= 10) {
+                cart[i + 1] = [product, 1];
+                break
+            }
         }
     }
 
