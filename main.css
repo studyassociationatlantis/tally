@@ -87,6 +87,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     align-items: center;
+    vertical-align: middle;
+}
+
+.ftr-btn {
+    height: 80%;
 }
 
 .col-sm-3 {

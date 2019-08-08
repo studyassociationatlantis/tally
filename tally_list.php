@@ -314,7 +314,12 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 
 <div class="container">
     <div class="page-header">
-        <h1 style="text-align: center;">S.A. Atlantis Tally List</h1>
+
+        <h1 style="text-align: center;">
+        <img src="logo.png" alt="S.A. Atlantis" style="max-height: 50px; display: inline;">
+        S.A. Atlantis Tally List
+        <img src="logo.png" alt="S.A. Atlantis" style="max-height: 50px; display: inline;">
+        </h1>
     </div>
 </div>
 
@@ -375,16 +380,16 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 <footer class="footer">
     <div class="container">
         <div class=col-sm-2>
-            <a href="#myPopup" data-rel="popup" class="btn btn-default">Register</a> 
+            <a href="#myPopup" data-rel="popup" class="btn btn-default ftr-btn">Register</a> 
         </div>
         <div class=col-sm-2 style="text-align: center;">
-           <a href="#myPopup3" data-rel ="popup" class="btn btn-default">Feedback</a>
+           <a href="#myPopup3" data-rel ="popup" class="btn btn-default ftr-btn">Feedback</a>
         </div>
         <div class=col-sm-4 style="text-align: center;">
             S.A. Atlantis Tally List
         </div>
         <div class=col-sm-2 id="checkout">
-            <a href="#myPopup2" data-rel="popup" class="btn btn-default" id="open_checkout">Checkout</a>
+            <a href="#myPopup2" data-rel="popup" class="btn btn-default ftr-btn" id="open_checkout">Checkout</a>
         </div>
 </footer>
 
