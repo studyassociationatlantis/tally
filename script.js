@@ -95,7 +95,6 @@ function log(action, success, info) {
         success: function(data) {
         },
         error: function(data) {
-            alert("(Error 611)")
             console.log(data)
         }
     });    
