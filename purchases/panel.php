@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<header>
-</header>
+<head>
+
+<title>S.A. Atlantis Tally List - Purchases</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th, td {
+padding: 5px;
+}
+</style>
+
+</head>
 <body>
 <?php
 
@@ -11,51 +29,112 @@ if($_SERVER["HTTPS"] != "on")
     exit();
 }
 
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
+function getToken($code, $state) {
+    $redirect_uri = "https://tally.sa-atlantis.nl/purchases/panel.php";
+    $url = "https://www.sa-atlantis.nl/oauth/token";
+    #Includes the variables $client_id and $client_secret
+    include("oauth.php");
 
-function verify($SN, $pass) {
-    $servername = "localhost";
-    include("../saatlant_members.php");
-    $dbname = "saatla1q_members";
-    $table = "current";
+    $curl = curl_init();
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $auth = base64_encode($client_id.":".$client_secret);
 
-    $sql = 'SELECT password, name_first, name_pre_last, name_last FROM '.$table.' WHERE num = "'.$SN.'"';
-    $result = $conn->query($sql);
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => $url,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => array(
+        'grant_type' => 'authorization_code',
+        'content_type' => 'application/x-www-form-urlencoded',
+        'code' => $code,
+        'state' => $state,
+        'authorization' => 'Basic '.$auth
+      )
+    ));
 
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        if (password_verify($pass, $row['password'])) {
-            $conn->close();
-            $GLOBALS['SN_purchases'] = $SN;
-            $GLOBALS['pass_purchases'] = $pass;
+    $headers = [
+        'content_type: application/x-www-form-urlencoded',
+        'authorization: Basic ' . $auth
+    ];
 
-            $name = $row['name_first'];
-            if (strlen($row['name_pre_last']) > 0) {
-                $name .= ' '.$row['name_pre_last'];
-            }
-            $name .= ' '.$row['name_last'];
-            $GLOBALS['name'] = $name;
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
 
-        } else {
-            echo 'Combination of username and password incorrect';
-        }
+    $info = curl_getinfo($curl);
+    //echo $info;
+    
+    curl_close($curl);
+    
+    if ($err) {
+      echo "cURL Error #:" . $err['message'];
+      die();
     } else {
-        echo 'None or multiple records were found';
+        $data = json_decode($response);
+        $token = $data->access_token;
+        return $token;
     }
 }
 
-if ((!isset($_POST['SN_purchases'])) || (!isset($_POST['pass_purchases']))) {
-    echo 'No login details available';
+function getStudentNumer($token) {
+    $url = "https://www.sa-atlantis.nl/oauth/userinfo";
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET"
+      ));
+
+    $headers = [
+        'content_type: application/x-www-form-urlencoded',
+        'authorization: Bearer ' . $token
+    ];
+
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    $info = curl_getinfo($curl);
+    //echo $info;
+    
+    curl_close($curl);
+    
+    if ($err) {
+      echo "cURL Error #:" . $err['message'];
+      die();
+    } else {
+        $data = json_decode($response);
+        $student_number = $data->username;
+        $GLOBALS['name'] = $data->name;
+        return $student_number;
+    }
+}
+
+if (!isset($_GET["code"])) {
+    echo 'Connection attempt failed <br>';
     die();
- } else {
-    verify($_POST['SN_purchases'], $_POST['pass_purchases']);
-    echo '<h1>Purchase Overview - '.$GLOBALS["name"].' ('.$_POST["SN_purchases"].')';
- }
+} else {
+    if ($_GET["state"] == "29") {
+        $token = getToken($_GET["code"], $_GET["state"] == "29");
+        $student_number = getStudentNumer($token);
+        $GLOBALS["SN_purchases"] = substr($student_number, 1);
+    } else {
+        echo 'Invalid state!';
+        die();
+    }
+}
+
  ?>
 
  <script type="text/javascript">
@@ -64,13 +143,26 @@ if ((!isset($_POST['SN_purchases'])) || (!isset($_POST['pass_purchases']))) {
     }
  </script>
 
- <button type="button" onclick="close_tab()">Close</button></h1>
+ <div class="container">
+    <div class="page-header">
+
+        <h1 style="text-align: center;">
+        <img src="../logo.png" alt="S.A. Atlantis" style="max-height: 50px; display: inline;">
+        S.A. Atlantis Tally List - Purchases
+        <img src="../logo.png" alt="S.A. Atlantis" style="max-height: 50px; display: inline;">
+        </h1>
+    </div>
+
+    <?php
+    echo '<h3> Student number: '.$GLOBALS["SN_purchases"];
+    echo ' - Name: '.$GLOBALS["name"].'</h3>';
+    ?>
 
  <?php
 
 $servername = "sa-atlantis.nl";
 include("../saatlant_tally.php");
-$dbname = "saatla1q_tally";
+$dbname = "saatlant_tally";
 $table = "tally_list";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -100,12 +192,14 @@ if ($result->num_rows > 0) {
     }
     echo '</table>';
     echo '<br>';
-    echo 'Total spent: €'.$total;
+    echo '<h4> Total spent: €'.number_format($total, 2).'<h4>';
 } else {
-    echo 'No records found';
+    echo 'No purchases found';
 }
 
 ?>
+
+</div>
 
 </body>
 </html>
