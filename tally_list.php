@@ -96,6 +96,10 @@ session_start();
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
     <script src="jquery.scannerdetection.js"></script>
+
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
 </head>
 
 <?php
@@ -382,8 +386,8 @@ $(window).bind('scannerDetectionComplete',function(e,data){
         <div class=col-sm-4 style="text-align: center;">
            <a href="#myPopup3" data-rel ="popup" class="btn btn-default ftr-btn" style="line-height: 48px;">Feedback</a>
         </div>
-        <div class=col-sm-4 style="text-align: center;">
-            S.A. Atlantis Tally List
+        <div class=col-sm-4 style="text-align: center; display: flex; justify-content: center;">
+            <img src="images/logo-full.png" alt="S.A. Atlantis" style="max-height: 60px;"> 
         </div>
         <div class=col-sm-4 id="checkout">
             <a href="#myPopup2" data-rel="popup" class="btn btn-default ftr-btn" id="open_checkout" style="line-height: 48px;">Checkout</a>
