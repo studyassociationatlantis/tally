@@ -481,6 +481,7 @@ function showfield2(name){
 <div class="container" style="margin: 20px;">
 <h1>Add user</h1>
 <i> Only enter 7-digit number, without the s/m </i><br>
+<i> Multiple users can be added in bulk directly to the database via phpmyadmin in <a href="https://cpanel.sa-atlantis.nl" target="_blank">cpanel</a>.</i><br>
 <form action='panel.php' method="post">
   <input type='text' name='add_user' placeholder='1234567'>
     <input type="submit" value="Add user">
