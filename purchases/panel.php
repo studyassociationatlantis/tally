@@ -226,7 +226,7 @@ if ($result->num_rows > 0) {
         if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
 
-          if ($row['SN_checkout'] == 1) {
+          if ($row['sn_checkout'] == 1) {
             echo 'Student number <input type="checkbox" name="student_number" checked> <br>';
           } else {
             echo 'Student number <input type="checkbox" name="student_number"> <br>';
