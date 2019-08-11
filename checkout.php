@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $timeout = 3600 * 24;
 
@@ -25,6 +25,8 @@ function register($user, $items, $amounts, $session) {
     $success = FALSE;
 
     if ($result->num_rows == 1) {
+      $row = $result->fetch_assoc();
+      if ($row['sn_checkout'] == 1) {
             for ($i=0; $i<count($items); $i++) {
                 $item = $items[$i];
                 $amount = $amounts[$i];
@@ -57,6 +59,9 @@ function register($user, $items, $amounts, $session) {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
             }
+      } else {
+        echo "Student number checkoud disabled";
+      }
             if ($success == TRUE) {
                 echo "Purchase succesful";
             }

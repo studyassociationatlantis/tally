@@ -138,6 +138,10 @@ function checkout(user) {
                                 document.getElementById("confirmation").style.display = "block";
                                 setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
                             }
+                        } else if (data == "Student number checkoud disabled") {
+                          log("checkout", 0, "student number checkout disabled");
+                          show_denial_image();
+                          alert("Student number checkout is disabled! This can be changed via the website.");
                         } else {
                             show_denial_image();
                         }
@@ -194,6 +198,10 @@ socket.onmessage = function(msgevent) {
                 } else {
                     alert("Student number not valid!")
                 }
+            } else if (data == 'Card checkout is disabled!') {
+              log("card_checkout", 0, "card checkout disabled");
+              show_denial_image();
+              alert("Card checkout is disabled! This can be changed via the website.");
             } else {
                 user = data
                 if (cart.length > 0) {

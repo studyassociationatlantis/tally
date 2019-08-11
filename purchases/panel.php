@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <style>
-table, td, th {  
+table, td, th {
   border: 1px solid #ddd;
   text-align: left;
 }
@@ -62,15 +62,15 @@ function getToken($code, $state) {
     ];
 
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    
+
     $response = curl_exec($curl);
     $err = curl_error($curl);
 
     $info = curl_getinfo($curl);
     //echo $info;
-    
+
     curl_close($curl);
-    
+
     if ($err) {
       echo "cURL Error #:" . $err['message'];
       die();
@@ -101,15 +101,15 @@ function getStudentNumer($token) {
     ];
 
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    
+
     $response = curl_exec($curl);
     $err = curl_error($curl);
 
     $info = curl_getinfo($curl);
     //echo $info;
-    
+
     curl_close($curl);
-    
+
     if ($err) {
       echo "cURL Error #:" . $err['message'];
       die();
@@ -148,15 +148,22 @@ if (!isset($_GET["code"])) {
 
         <h1 style="text-align: center;">
         <img src="../logo.png" alt="S.A. Atlantis" style="max-height: 50px; display: inline;">
-        S.A. Atlantis Tally List - Purchases
+        S.A. Atlantis Tally List - Purchases and settings
         <img src="../logo.png" alt="S.A. Atlantis" style="max-height: 50px; display: inline;">
         </h1>
     </div>
 
     <?php
+    echo '<center>';
     echo '<h3> Student number: '.$GLOBALS["SN_purchases"];
     echo ' - Name: '.$GLOBALS["name"].'</h3>';
+    echo '</center>';
     ?>
+
+<div class="row">
+
+<div class="col-sm-8">
+<h4> Purchases </h4>
 
  <?php
 
@@ -199,6 +206,56 @@ if ($result->num_rows > 0) {
 
 ?>
 
+</div>
+
+<div class="col-sm-4">
+  <div class="container">
+  <h4> Settings </h4>
+    <form action='settings.php' method="post">
+      <b>Allow checkout using:</b> <br>
+        <?php
+
+        $servername = "sa-atlantis.nl";
+        include("../saatlant_tally.php");
+        $dbname = "saatlant_tally";
+        $table = "tally_users";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        $sql = 'SELECT * FROM '.$table.' WHERE student_number = "'.$GLOBALS["SN_purchases"].'"';
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc();
+
+          if ($row['sn_checkout'] == 1) {
+            echo 'Student number <input type="checkbox" name="student_number" checked> <br>';
+          } else {
+            echo 'Student number <input type="checkbox" name="student_number"> <br>';
+          }
+
+          if ($row['card_checkout'] == 1) {
+            echo 'Student card <input type="checkbox" name="student_card" checked> <br>';
+          } else {
+            echo 'Student card <input type="checkbox" name="student_card"> <br>';
+          }
+
+        } else {
+          echo 'Student number <input type="checkbox" name="student_number"> <br>';
+          echo 'Student card <input type="checkbox" name="student_card"> <br>';
+        }
+
+        echo '<input type="hidden" name="user" value="'.$GLOBALS["SN_purchases"].'">';
+
+        ?>
+
+        <input type="submit" value="Save settings!">
+    </form>
+  </div>
+</div>
+
+
+</div>
 </div>
 
 </body>
