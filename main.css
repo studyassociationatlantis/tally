@@ -7,7 +7,7 @@ body {
     font-family: "roboto";
 }
 
-#confirmation, #denial {
+#confirmation, #confirmation2, #confirmation3, #denial {
     min-width:350px;
     min-height:350px;
     max-width:350px;
@@ -15,7 +15,7 @@ body {
     position: absolute;
     z-index: 100;
     top: 50%;
-    left: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 

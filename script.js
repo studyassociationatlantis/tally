@@ -129,6 +129,10 @@ function checkout(user) {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation2").style.display = "block";
                                 setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
+                            } else if (user == "1831828") {
+                                document.getElementById("myPopup2").style.display = "none";
+                                document.getElementById("confirmation3").style.display = "block";
+                                setTimeout(function() {document.getElementById("confirmation3").style.display = "none"}, 2000)
                             } else {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation").style.display = "block";
@@ -221,6 +225,10 @@ socket.onmessage = function(msgevent) {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation2").style.display = "block";
                                             setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000);
+                                        } else if (user == "1831828") {
+                                            document.getElementById("myPopup2").style.display = "none";
+                                            document.getElementById("confirmation3").style.display = "block";
+                                            setTimeout(function() {document.getElementById("confirmation3").style.display = "none"}, 2000)
                                         } else {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation").style.display = "block";

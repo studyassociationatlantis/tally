@@ -35,15 +35,15 @@ function getToken($code, $state) {
     ];
 
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    
+
     $response = curl_exec($curl);
     $err = curl_error($curl);
 
     $info = curl_getinfo($curl);
     //echo $info;
-    
+
     curl_close($curl);
-    
+
     if ($err) {
       echo "cURL Error #:" . $err['message'];
     } else {
@@ -133,7 +133,7 @@ if ($result->num_rows > 0) {
         $myObj->random = $row["random"];
 
         $myJSON = json_encode($myObj);
-        
+
         echo '<script type="text/javascript">add_product('.$myJSON.')</script>';
     }
 } else {
@@ -167,6 +167,12 @@ if ($result->num_rows > 0) {
 <div id="confirmation2" style="display: none;">
     <div>
         <img src="images/goldstrike.png" style='height: 100%; width: 100%;'>
+    </div>
+</div>
+
+<div id="confirmation3" style="display: none;">
+    <div>
+        <img src="images/Banana.png" style='height: 100%; width: 100%;'>
     </div>
 </div>
 
@@ -264,7 +270,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
         if (SN.length == 8) {
             SN = SN.substr(1, 8);
         }
-        
+
         if (SN.length == 7) {
             checkout(SN);
             document.getElementById("checkout_form").reset();
@@ -272,13 +278,13 @@ $(window).bind('scannerDetectionComplete',function(e,data){
             document.getElementById("denial").style.display = "block";
             setTimeout(function() {document.getElementById("denial").style.display = "none"}, 2000)
             log("checkout", 0, "checkout fail" + SN);
-        }        
+        }
     });
-    
+
     $("#feedback_form").submit(function(){
 
         event.preventDefault()
-        
+
         var data = {
             name: $("#feedback_name").val(),
             msg: $("#msg").val()
@@ -291,11 +297,11 @@ $(window).bind('scannerDetectionComplete',function(e,data){
             success: function(){
                 $('.success').fadeIn(1000);
             }
-            
+
         });
-        
+
         document.getElementById("feedback_form").reset();
-        
+
     });
 
     Mousetrap.bind('c', function(e) {
@@ -354,19 +360,19 @@ $(window).bind('scannerDetectionComplete',function(e,data){
             <div class="row btn_row">
                 <div class="col-sm-3" id="btn1"></div>
                 <div class="col-sm-3" id="btn2"></div>
-                <div class="col-sm-3" id="btn3"></div>            
+                <div class="col-sm-3" id="btn3"></div>
                 <div class="col-sm-3" id="btn4"></div>
             </div>
             <div class="row btn_row">
                 <div class="col-sm-3" id="btn5"></div>
                 <div class="col-sm-3" id="btn6"></div>
-                <div class="col-sm-3" id="btn7"></div>            
+                <div class="col-sm-3" id="btn7"></div>
                 <div class="col-sm-3" id="btn8"></div>
             </div>
             <div class="row btn_row">
                 <div class="col-sm-3" id="btn9"></div>
                 <div class="col-sm-3" id="btn10"></div>
-                <div class="col-sm-3" id="btn11"></div>            
+                <div class="col-sm-3" id="btn11"></div>
                 <div class="col-sm-3" id="btn12"></div>
             </div>
     </div>
@@ -376,7 +382,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
         <div id="empty_cart" style="display: none; width: 100%; margin-top: 5px;">
             <a href="#" class="btn btn-default" onclick="emptycart()" style="width: 100%;">Empty cart</a>
         </div>
-    </div>    
+    </div>
 
     </div>
 </div>
@@ -387,7 +393,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
            <a href="#myPopup3" data-rel ="popup" class="btn btn-default ftr-btn" style="line-height: 48px;">Feedback</a>
         </div>
         <div class=col-sm-4 style="text-align: center; display: flex; justify-content: center;">
-            <img src="images/logo-full.png" alt="S.A. Atlantis" style="max-height: 60px;"> 
+            <img src="images/logo-full.png" alt="S.A. Atlantis" style="max-height: 60px;">
         </div>
         <div class=col-sm-4 id="checkout">
             <a href="#myPopup2" data-rel="popup" class="btn btn-default ftr-btn" id="open_checkout" style="line-height: 48px;">Checkout</a>
@@ -396,7 +402,7 @@ $(window).bind('scannerDetectionComplete',function(e,data){
 
 <script type="text/javascript">
 $('#open_checkout').click( function () {
-    setTimeout(function() {document.getElementById("SN2").focus()}, 10), 
+    setTimeout(function() {document.getElementById("SN2").focus()}, 10),
     document.getElementById("myPopup2").style.display = "block"
 })
 </script>
