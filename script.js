@@ -29,7 +29,7 @@ function spawn_buttons(category) {
 
     for (i = 0; i < ind.length; i++) {
         document.getElementById("btn" + (i + 1)).innerHTML = '<a href="#" onclick=\'add_cart("'+products[ind[i]].product+'")\' class="btn btn-default" style="background-image: url('+products[ind[i]].image+')"></a><br>'+products[ind[i]].product+' €'+products[ind[i]].price;
-    } 
+    }
     for (i = ind.length; i < 12; i++) {
         document.getElementById("btn" + (i + 1)).innerHTML = '';
     }
@@ -72,7 +72,7 @@ function add_cart(product) {
         }
     }
 
-    for(i = 0; i < cart.length; i++) {        
+    for(i = 0; i < cart.length; i++) {
         cart_str = cart_str.concat(cart[i][1] + " x " + cart[i][0] + "<br>");
     }
 
@@ -97,7 +97,7 @@ function log(action, success, info) {
         error: function(data) {
             console.log(data)
         }
-    });    
+    });
 }
 
 function show_denial_image() {
@@ -128,7 +128,11 @@ function checkout(user) {
                             if (user == "2004933") {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation2").style.display = "block";
-                                setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)                                   
+                                setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
+                            } else if (user == "1831828") {
+                                document.getElementById("myPopup2").style.display = "none";
+                                document.getElementById("confirmation3").style.display = "block";
+                                setTimeout(function() {document.getElementById("confirmation3").style.display = "none"}, 2000)
                             } else {
                                 document.getElementById("myPopup2").style.display = "none";
                                 document.getElementById("confirmation").style.display = "block";
@@ -157,7 +161,7 @@ function random() {
     for (i=0; i < products.length; i++) {
         if (products[i].random == true) {
             possibilities.push(products[i].product);
-        }    
+        }
     }
     add_cart(possibilities[Math.floor(Math.random()*possibilities.length)]);
 }
@@ -212,7 +216,11 @@ socket.onmessage = function(msgevent) {
                                         if (user == "2004933") {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation2").style.display = "block";
-                                            setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000);                                          
+                                            setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000);
+                                        } else if (user == "1831828") {
+                                            document.getElementById("myPopup2").style.display = "none";
+                                            document.getElementById("confirmation3").style.display = "block";
+                                            setTimeout(function() {document.getElementById("confirmation3").style.display = "none"}, 2000)
                                         } else {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation").style.display = "block";
