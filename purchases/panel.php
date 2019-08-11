@@ -148,14 +148,16 @@ if (!isset($_GET["code"])) {
 
         <h1 style="text-align: center;">
         <img src="../logo.png" alt="S.A. Atlantis" style="max-height: 50px; display: inline;">
-        S.A. Atlantis Tally List - Purchases
+        S.A. Atlantis Tally List - Purchases and settings
         <img src="../logo.png" alt="S.A. Atlantis" style="max-height: 50px; display: inline;">
         </h1>
     </div>
 
     <?php
+    echo '<center>';
     echo '<h3> Student number: '.$GLOBALS["SN_purchases"];
     echo ' - Name: '.$GLOBALS["name"].'</h3>';
+    echo '</center>';
     ?>
 
 <div class="row">
