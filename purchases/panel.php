@@ -208,7 +208,7 @@ if ($result->num_rows > 0) {
 
 </div>
 
-<div class="col-sm-4">
+<div class="col-sm-2">
   <div class="container">
   <h4> Settings </h4>
     <form action='settings.php' method="post">
@@ -252,6 +252,14 @@ if ($result->num_rows > 0) {
         <input type="submit" value="Save settings!">
     </form>
   </div>
+
+
+</div>
+
+<div class="col-sm-2" style="font-size: 80%;">
+  <br>
+  <i>Disabling both checking out with student number and student card makes sure you cannot use the tally list at all.
+  This can be convenient if you do not want anyone to (accidentally) tally on your name when you are not in Enschede.</i>
 </div>
 
 
