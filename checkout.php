@@ -63,7 +63,7 @@ function register($user, $items, $amounts, $session) {
         echo "Student number checkoud disabled";
       }
             if ($success == TRUE) {
-                echo "Purchase succesful";
+                echo "Purchase successful";
             }
             //echo 'Purchase successful';
     } else if ($result->num_rows == 0) {
