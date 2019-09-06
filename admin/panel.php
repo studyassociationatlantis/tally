@@ -11,7 +11,7 @@ session_start();
     if (!isset($_SESSION['username'], $_SESSION['password'])) {
         echo 'Connection attempt failed <br>';
         die();
-    } 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ $password = $_SESSION['password'];
 $dbname = "saatlant_tally";
 
 $GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
-    
+
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
@@ -50,7 +50,7 @@ function add_barcode($barcode, $product) {
 
     $result = $conn->query($sql);
     if($result->num_rows == 0) {
-        $sql = 'INSERT INTO '.$table.' (barcode, product) VALUES ("'.$barcode.'", "'.$product.'")';        
+        $sql = 'INSERT INTO '.$table.' (barcode, product) VALUES ("'.$barcode.'", "'.$product.'")';
         if($conn->query($sql) == TRUE) {
             echo 'Barcode added successfully';
         } else {
@@ -79,15 +79,15 @@ function add_product($category, $product, $price, $image, $barcode, $unit) {
 
         if($barcode) {
             add_barcode($barcode, $product);
-        }    
+        }
 }
 
 function change_price($product, $price) {
-    
+
     $table = "tally_products";
 
     $sql = 'UPDATE '.$table.' SET price = '.$price.' WHERE product = "'.$product.'"';
-    
+
     if($GLOBALS['conn']->query($sql) == TRUE) {
         echo 'Price changed succesfully';
     } else {
@@ -100,12 +100,12 @@ function change_unit($product, $unit) {
     $table = "tally_products";
 
     $sql = 'UPDATE '.$table.' SET unit = '.$unit.' WHERE product = "'.$product.'"';
-    
+
     if($GLOBALS['conn']->query($sql) == TRUE) {
         echo 'Unit changed succesfully';
     } else {
         echo 'Changing unit failed';
-    }   
+    }
 }
 
 function change_image($product, $image) {
@@ -113,13 +113,13 @@ function change_image($product, $image) {
         $table = "tally_products";
 
         $sql = 'UPDATE '.$table.' SET image = "'.$image.'" WHERE product = "'.$product.'"';
-        
+
         if($GLOBALS['conn']->query($sql) == TRUE) {
             echo 'Image changed succesfully';
         } else {
             echo 'Changing image failed';
-        }  
-    } 
+        }
+    }
 }
 
 function change_category($product, $category) {
@@ -127,12 +127,12 @@ function change_category($product, $category) {
         $table = "tally_products";
 
         $sql = 'UPDATE '.$table.' SET category = "'.$category.'" WHERE product = "'.$product.'"';
-        
+
         if($GLOBALS['conn']->query($sql) == TRUE) {
             echo 'Category changed succesfully';
         } else {
             echo 'Changing category failed';
-        }   
+        }
     }
 }
 
@@ -141,13 +141,13 @@ function change_name($product, $product_name) {
         $table = "tally_products";
 
         $sql = 'UPDATE '.$table.' SET product = "'.$product_name.'" WHERE product = "'.$product.'"';
-        
+
         if($GLOBALS['conn']->query($sql) == TRUE) {
             echo 'Product name changed succesfully';
         } else {
             echo 'Changing product name failed';
-        } 
-    }  
+        }
+    }
 }
 
 function delete_product($product) {
@@ -161,6 +161,29 @@ function delete_product($product) {
         echo 'Deleting product failed';
     }
 
+}
+
+function add_user($user) {
+  if (is_numeric($user) && strlen($user) == 7) {
+
+    $table = "tally_users";
+
+    $sql = 'SELECT * FROM '.$table.' WHERE student_number = "'.$user.'"';
+    $result = $GLOBALS['conn']->query($sql);
+
+    if($result->num_rows == 0) {
+      $sql = 'INSERT INTO '.$table.' (student_number, sn_checkout) VALUES ("'.$user.'", 1)';
+      if($GLOBALS['conn']->query($sql) == TRUE) {
+          echo 'Added user '.$user.' succesfully!';
+      } else {
+          echo 'Adding user '.$user.' failed!';
+      }
+    } else {
+      echo 'User '.$user.' already added!';
+    }
+  } else {
+      echo 'User '.$user.' invalid!';
+  }
 }
 
 if (isset($_POST["change_product"], $_POST["change_price"])) {
@@ -195,6 +218,10 @@ if (isset($_POST['category'], $_POST['product'], $_POST['image'], $_POST['unit']
     add_product($_POST['category'], $_POST['product'], $_POST['price'], $_POST['image'], $_POST['barcode'], $_POST['unit']);
 }
 
+if (isset($_POST['add_user'])) {
+  add_user($_POST['add_user']);
+}
+
 function download() {
     $table = "tally_list";
 
@@ -211,7 +238,7 @@ function download() {
         while($row = $result->fetch_assoc()) {
             echo '<tr>';
             echo '<td>'.$row["student_number"].'</td>';
-            
+
             $sql = 'SELECT total FROM '.$table.' WHERE student_number = "'.$row["student_number"].'" ORDER BY student_number ASC';
             $result2 = $GLOBALS['conn']->query($sql);
 
@@ -269,7 +296,7 @@ function showfield(name){
 
         <form id="form" action="/">
         Category:
-        
+
             <?php
             $table = "tally_products";
 
@@ -281,7 +308,7 @@ function showfield(name){
                 echo '<option disabled selected value> -- select category -- </option>';
                 while($row = $result->fetch_assoc()) {
                     $category = $row["category"];
-                    echo '<option value="'.$category.'">'.$category.'</option>';  
+                    echo '<option value="'.$category.'">'.$category.'</option>';
                 }
                 echo '<option value="other">Other</option>';
                 echo '</select>';
@@ -332,7 +359,7 @@ function showfield2(name){
                 $product = $row["product"];
                 echo '<option value="'.$product.'">'.$product.'</option>';
             }
-            echo '</select>';  
+            echo '</select>';
             echo '<i>Select product</i><br>';
             echo 'Price: <input id="change_price" type="number" step="0.01" name="price">';
             echo '<i>Enter new price in euros</i><br>';
@@ -353,7 +380,7 @@ function showfield2(name){
                 echo '<option disabled selected value> -- select category -- </option>';
                 while ($row = $result->fetch_assoc()){
                     $category = $row["category"];
-                echo '<option value="'.$category.'">'.$category.'</option>'; 
+                echo '<option value="'.$category.'">'.$category.'</option>';
                 }
                 echo '<option value="other">Other</option>';
                 echo '</select>';
@@ -449,6 +476,16 @@ function showfield2(name){
         <input type="submit" value="Download as CSV">
     </form>
 </div>
+</div>
+
+<div class="container" style="margin: 20px;">
+<h1>Add user</h1>
+<i> Only enter 7-digit number, without the s/m </i><br>
+<i> Multiple users can be added in bulk directly to the database via phpmyadmin in <a href="https://cpanel.sa-atlantis.nl" target="_blank">cpanel</a>.</i><br>
+<form action='panel.php' method="post">
+  <input type='text' name='add_user' placeholder='1234567'>
+    <input type="submit" value="Add user">
+</form>
 </div>
 
 <div class="container" style="margin: 20px;">
