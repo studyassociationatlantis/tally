@@ -122,7 +122,6 @@ function checkout(user) {
                 type: "POST",
                 data: {user : user, items : items, amounts : amounts, session : session},
                 success: function(data) {
-                    alert(data);
                     if (data.length > 0) {
                         if (data == "Purchase successful") {
                             emptycart();
