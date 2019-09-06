@@ -123,6 +123,7 @@ function checkout(user) {
                 data: {user : user, items : items, amounts : amounts, session : session},
                 success: function(data) {
                     if (data.length > 0) {
+                        alert("Hello! I am an alert box!!");
                         if (data == "Purchase succesful") {
                             emptycart();
                             if (user == "2004933") {
