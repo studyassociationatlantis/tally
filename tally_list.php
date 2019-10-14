@@ -96,15 +96,9 @@ session_start();
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
     <script src="jquery.scannerdetection.js"></script>
-
-    <meta http-equiv=“Pragma” content=”no-cache”>
-    <meta http-equiv=“Expires” content=”-1″>
-    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
 </head>
 
 <?php
-header("Cache-Control: max-age=86400"); //30days (60sec * 60min * 24hours * 30days)
-
 // Server details
 $servername = "localhost";
 include("saatlant_tally.php");
