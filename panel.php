@@ -11,7 +11,7 @@ session_start();
     if (!isset($_SESSION['username'], $_SESSION['password'])) {
         echo 'Connection attempt failed <br>';
         die();
-    } 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,13 +33,13 @@ $password = $_SESSION['password'];
 $dbname = "saatlant_tally";
 
 $GLOBALS['conn'] = new mysqli($servername, $username, $password, $dbname);
-    
+
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
 function add_barcode($product, $barcode) {
-    $servername = "sa-atlantis.nl";
+    $servername = "localhost";
     include("../saatlant_tally.php");
     $dbname = "saatlant_tally";
     $table = "tally_barcodes";
@@ -61,7 +61,7 @@ function add_barcode($product, $barcode) {
 }
 
 function add_product($category, $product, $price, $image, $barcode, $unit) {
-    $servername = "sa-atlantis.nl";
+    $servername = "localhost";
     include("../saatlant_tally.php");
     $dbname = "saatlant_tally";
     $table = "tally_products";
@@ -79,11 +79,11 @@ function add_product($category, $product, $price, $image, $barcode, $unit) {
 }
 
 function change_price($product, $price) {
-    
+
     $table = "tally_products";
 
     $sql = 'UPDATE '.$table.' SET price = '.$price.' WHERE product = "'.$product.'"';
-    
+
     if($GLOBALS['conn']->query($sql) == TRUE) {
         echo 'Price changed succesfully';
     } else {
@@ -96,12 +96,12 @@ function change_unit($product, $unit) {
     $table = "tally_products";
 
     $sql = 'UPDATE '.$table.' SET unit = '.$unit.' WHERE product = "'.$product.'"';
-    
+
     if($GLOBALS['conn']->query($sql) == TRUE) {
         echo 'Unit changed succesfully';
     } else {
         echo 'Changing unit failed';
-    }   
+    }
 }
 
 function change_image($product, $image) {
@@ -109,13 +109,13 @@ function change_image($product, $image) {
         $table = "tally_products";
 
         $sql = 'UPDATE '.$table.' SET image = "'.$image.'" WHERE product = "'.$product.'"';
-        
+
         if($GLOBALS['conn']->query($sql) == TRUE) {
             echo 'Image changed succesfully';
         } else {
             echo 'Changing image failed';
-        }  
-    } 
+        }
+    }
 }
 
 function change_barcode($product, $barcode) {
@@ -123,13 +123,13 @@ function change_barcode($product, $barcode) {
         $table = "tally_products";
 
         $sql = 'UPDATE '.$table.' SET barcode = "'.$barcode.'" WHERE product = "'.$product.'"';
-        
+
         if($GLOBALS['conn']->query($sql) == TRUE) {
             echo 'Barcode changed succesfully';
         } else {
             echo 'Changing barcode failed';
-        }  
-    } 
+        }
+    }
 }
 
 function change_category($product, $category) {
@@ -137,12 +137,12 @@ function change_category($product, $category) {
         $table = "tally_products";
 
         $sql = 'UPDATE '.$table.' SET category = "'.$category.'" WHERE product = "'.$product.'"';
-        
+
         if($GLOBALS['conn']->query($sql) == TRUE) {
             echo 'Category changed succesfully';
         } else {
             echo 'Changing category failed';
-        }   
+        }
     }
 }
 
@@ -151,13 +151,13 @@ function change_name($product, $product_name) {
         $table = "tally_products";
 
         $sql = 'UPDATE '.$table.' SET product = "'.$product_name.'" WHERE product = "'.$product.'"';
-        
+
         if($GLOBALS['conn']->query($sql) == TRUE) {
             echo 'Product name changed succesfully';
         } else {
             echo 'Changing product name failed';
-        } 
-    }  
+        }
+    }
 }
 
 function delete_product($product) {
@@ -221,7 +221,7 @@ function download() {
         while($row = $result->fetch_assoc()) {
             echo '<tr>';
             echo '<td>'.$row["student_number"].'</td>';
-            
+
             $sql = 'SELECT total FROM '.$table.' WHERE student_number = "'.$row["student_number"].'"';
             $result2 = $GLOBALS['conn']->query($sql);
 
@@ -279,7 +279,7 @@ function showfield(name){
 
         <form id="form" action="/">
         Category:
-        
+
             <?php
             $table = "tally_products";
 
@@ -291,7 +291,7 @@ function showfield(name){
                 echo '<option disabled selected value> -- select category -- </option>';
                 while($row = $result->fetch_assoc()) {
                     $category = $row["category"];
-                    echo '<option value="'.$category.'">'.$category.'</option>';  
+                    echo '<option value="'.$category.'">'.$category.'</option>';
                 }
                 echo '<option value="other">Other</option>';
                 echo '</select>';
@@ -342,7 +342,7 @@ function showfield2(name){
                 $product = $row["product"];
                 echo '<option value="'.$product.'">'.$product.'</option>';
             }
-            echo '</select>';  
+            echo '</select>';
             echo '<i>Select product</i><br>';
             echo 'Price: <input id="change_price" type="number" step="0.01" name="price">';
             echo '<i>Enter new price in euros</i><br>';
@@ -363,7 +363,7 @@ function showfield2(name){
                 echo '<option disabled selected value> -- select category -- </option>';
                 while ($row = $result->fetch_assoc()){
                     $category = $row["category"];
-                echo '<option value="'.$category.'">'.$category.'</option>'; 
+                echo '<option value="'.$category.'">'.$category.'</option>';
                 }
                 echo '<option value="other">Other</option>';
                 echo '</select>';

@@ -4,7 +4,7 @@
 
 function change_settings($user, $student_number, $student_card) {
 
-  $servername = "sa-atlantis.nl";
+  $servername = "localhost";
   include("../saatlant_tally.php");
   $dbname = "saatlant_tally";
   $table = "tally_users";

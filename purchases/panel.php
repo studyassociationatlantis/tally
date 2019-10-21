@@ -215,7 +215,7 @@ if ($result->num_rows > 0) {
       <b>Allow checkout using:</b> <br>
         <?php
 
-        $servername = "sa-atlantis.nl";
+        $servername = "localhost";
         include("../saatlant_tally.php");
         $dbname = "saatlant_tally";
         $table = "tally_users";

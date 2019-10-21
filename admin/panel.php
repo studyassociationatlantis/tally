@@ -39,7 +39,7 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 function add_barcode($barcode, $product) {
-    $servername = "sa-atlantis.nl";
+    $servername = "localhost";
     include("../saatlant_tally.php");
     $dbname = "saatlant_tally";
     $table = "tally_barcodes";
@@ -62,7 +62,7 @@ function add_barcode($barcode, $product) {
 }
 
 function add_product($category, $product, $price, $image, $barcode, $unit) {
-        $servername = "sa-atlantis.nl";
+        $servername = "localhost";
         include("../saatlant_tally.php");
         $dbname = "saatlant_tally";
         $table = "tally_products";
