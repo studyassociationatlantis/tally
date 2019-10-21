@@ -3,8 +3,12 @@
 <?php
 
 function change_settings($user, $student_number, $student_card) {
+  if (strlen($user) != 7) {
+    echo 'Failed updating settings! Session expired, please login again.';
+    return;
+  }
 
-  $servername = "sa-atlantis.nl";
+  $servername = "localhost";
   include("../saatlant_tally.php");
   $dbname = "saatlant_tally";
   $table = "tally_users";
