@@ -148,7 +148,7 @@ if ($result->num_rows > 0) {
 
 <div id="confirmation" style="display: none;">
     <div>
-        <img src="images/fish.png" style='height: 100%; width: 100%;'>
+        <img src="images/fish.png">
     </div>
 </div>
 

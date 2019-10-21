@@ -122,7 +122,6 @@ function checkout(user) {
                 type: "POST",
                 data: {user : user, items : items, amounts : amounts, session : session},
                 success: function(data) {
-                    alert(data);
                     if (data.length > 0) {
                         if (data == "Purchase successful") {
                             emptycart();
@@ -135,9 +134,9 @@ function checkout(user) {
                                 document.getElementById("confirmation3").style.display = "block";
                                 setTimeout(function() {document.getElementById("confirmation3").style.display = "none"}, 2000)
                             } else {
-                                document.getElementById("myPopup2").style.display = "none";
-                                document.getElementById("confirmation").style.display = "block";
-                                setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
+                              document.getElementById("myPopup2").style.display = "none";
+                              document.getElementById("confirmation").style.display = "block";
+                              setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
                             }
                         } else if (data == "Student number checkoud disabled") {
                           log("checkout", 0, "student number checkout disabled");
