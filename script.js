@@ -122,6 +122,7 @@ function checkout(user) {
                 type: "POST",
                 data: {user : user, items : items, amounts : amounts, session : session},
                 success: function(data) {
+                    alert(data);
                     if (data.length > 0) {
                         if (data == "Purchase successful") {
                             emptycart();
@@ -151,6 +152,7 @@ function checkout(user) {
                 },
                 error: function(data) {
                     console.log(data)
+                    alert(data);
                     show_denial_image();
                 }
             });
@@ -220,7 +222,7 @@ socket.onmessage = function(msgevent) {
                             success: function(data) {
                                 if (data.length > 0) {
                                     emptycart();
-                                    if (data == "Purchase succesful") {
+                                    if (data == "Purchase successful") {
                                         if (user == "2004933") {
                                             document.getElementById("myPopup2").style.display = "none";
                                             document.getElementById("confirmation2").style.display = "block";
