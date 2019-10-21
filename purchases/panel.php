@@ -167,7 +167,7 @@ if (!isset($_GET["code"])) {
 
  <?php
 
-$servername = "sa-atlantis.nl";
+$servername = "localhost";
 include("../saatlant_tally.php");
 $dbname = "saatlant_tally";
 $table = "tally_list";
