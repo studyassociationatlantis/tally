@@ -154,19 +154,19 @@ if ($result->num_rows > 0) {
 
 <div id="denial" style="display: none;">
     <div>
-        <img src="images/sad_fish.gif" style='height: 100%; width: 100%;'>
+        <img src="images/sad_fish.gif">
     </div>
 </div>
 
 <div id="confirmation2" style="display: none;">
     <div>
-        <img src="images/goldstrike.png" style='height: 100%; width: 100%;'>
+        <img src="images/goldstrike.png">
     </div>
 </div>
 
 <div id="confirmation3" style="display: none;">
     <div>
-        <img src="images/Banana.png" style='height: 100%; width: 100%;'>
+        <img src="images/Banana.png">
     </div>
 </div>
 
