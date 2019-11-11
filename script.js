@@ -106,6 +106,48 @@ function show_denial_image() {
     log("checkout", 0, "checkout fail" + SN);
 }
 
+function purchase_success(user) {
+  emptycart();
+  if (user == "2004933") {
+      document.getElementById("myPopup2").style.display = "none";
+      document.getElementById("confirmation2").style.display = "block";
+      setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
+  } else if (user == "1831828") {
+      document.getElementById("myPopup2").style.display = "none";
+      document.getElementById("confirmation3").style.display = "block";
+      setTimeout(function() {document.getElementById("confirmation3").style.display = "none"}, 2000)
+  } else {
+    document.getElementById("myPopup2").style.display = "none";
+    document.getElementById("confirmation").style.display = "block";
+    setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
+  }
+}
+
+function verify_purchase(user) {
+    items = [];
+    amounts = [];
+    for (i=0; i<cart.length; i++) {
+        items = items.concat(cart[i][0]);
+        amounts = amounts.concat(cart[i][1]);
+    }
+
+    $.ajax({
+      url: "verify.php",
+      type: "POST",
+      data: {user : user, items : items, amounts : amounts},
+      success: function(data) {
+          if (data == "Verification successful!") {
+            purchase_success();
+          } else {
+            show_denial_image();
+          }
+      },
+      error: function(data) {
+          return false;
+      }
+    });
+}
+
 function checkout(user) {
     if (cart.length != 0) {
         if (user.length == 7) {
@@ -124,20 +166,7 @@ function checkout(user) {
                 success: function(data) {
                     if (data.length > 0) {
                         if (data == "Purchase successful") {
-                            emptycart();
-                            if (user == "2004933") {
-                                document.getElementById("myPopup2").style.display = "none";
-                                document.getElementById("confirmation2").style.display = "block";
-                                setTimeout(function() {document.getElementById("confirmation2").style.display = "none"}, 2000)
-                            } else if (user == "1831828") {
-                                document.getElementById("myPopup2").style.display = "none";
-                                document.getElementById("confirmation3").style.display = "block";
-                                setTimeout(function() {document.getElementById("confirmation3").style.display = "none"}, 2000)
-                            } else {
-                              document.getElementById("myPopup2").style.display = "none";
-                              document.getElementById("confirmation").style.display = "block";
-                              setTimeout(function() {document.getElementById("confirmation").style.display = "none"}, 2000)
-                            }
+                            verify_purchase(user);
                         } else if (data == "Student number checkoud disabled") {
                           log("checkout", 0, "student number checkout disabled");
                           show_denial_image();
