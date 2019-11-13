@@ -139,6 +139,7 @@ function verify_purchase(user) {
           if (data == "Verification successful!") {
             purchase_success();
           } else {
+            alert(data);
             show_denial_image();
           }
       },

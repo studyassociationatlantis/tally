@@ -20,11 +20,14 @@ function register($user, $items, $amounts) {
     $table = "tally_list";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = 'SELECT * FROM '.$table.' ORDER BY id DESC LIMIT 10';
+    $sql = 'SELECT * FROM '.$table.' ORDER BY id DESC LIMIT '.$num_items;
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
+          if ($row['student_number'] != $user) {
+            echo "student_number_different";
+          }
           if (!in_array($row["product"], $items)) {
             echo "x";
             echo $row['product'];
