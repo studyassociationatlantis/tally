@@ -24,7 +24,7 @@ if (isset($_POST['action'])) {
     add_log($_POST['action'], $_POST['success'], $_POST['info']);
     echo 'Variable found!';
 } else {
-    echo 'Connection failed HANLO';
+    echo 'Connection failed';
     die();
 }
 
