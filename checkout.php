@@ -76,7 +76,7 @@ function register($user, $items, $amounts, $session) {
 if (isset($_POST['user'])) {
     register($_POST['user'], $_POST['items'], $_POST['amounts'], $_POST['session']);
 } else {
-    echo 'Connection failed';
+    echo 'Connection failed...';
     die();
 }
 ?>
